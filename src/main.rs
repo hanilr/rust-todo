@@ -17,20 +17,20 @@ fn main() {
         width = w.try_into().unwrap_or(80);
         height = h.try_into().unwrap_or(24);
     } else {
-        println!("Terminal boyutu hesaplanamadı, varsayılan değerler kullanılıyor.");
+        println!("Terminal error.");
         width = 60;
         height = 15;
     }
 
     let mut my_list = List::new();
     
-    my_list.add("Sistemi Guncelle", "Paketleri guncellemeyi unutma.");
-    my_list.add("Rust Calis", "Ownership kurallarini tekrar et.");
-    my_list.add("Kod Birlestir", "Modulleri tek dosyada topla.");
-    my_list.add("Gereksiz Gorev", "Bu gorev birazdan silinecek.");
+    my_list.add("System update", "Don't forget to update.");
+    my_list.add("Learn Rust", "Make specific project to imporve.");
+    my_list.add("Merge code", "Make a file with whole codebase.");
+    my_list.add("Nested", "This task will be deleted.");
 
-    my_list.change_title(0, "[GUNCEL] Sistemi Guncelle");
-    my_list.change_description(1, "Ownership ve Borrowing kurallarini tekrar et.");
+    my_list.change_title(0, "[NOW] Update system");
+    my_list.change_description(1, "Learn the ownership and borrowing.");
 
     my_list.done(1);
     my_list.done(2);
@@ -39,13 +39,13 @@ fn main() {
 
     let folder = FolderType::new("my_showcase_tasks");
     
-    folder.add_file("kalici_dosya", "json", "{\"status\": \"basarili\"}");
-    folder.add_file("gecici_dosya", "txt", "Bu dosya remove_file fonksiyonunu test etmek icin.");
+    folder.add_file("ok_file", "json", "{\"status\": \"success\"}");
+    folder.add_file("temp_file", "txt", "We testing remove file function.");
 
-    if let Some(read_data) = folder.read_file("kalici_dosya") {
+    if let Some(read_data) = folder.read_file("ok_file") {
     }
 
-    folder.remove_file("gecici_dosya");
+    folder.remove_file("temp_file");
     print!("\x1B[2J\x1B[1;1H");
 
     let main_ui = UI::new(width, height, 0, 0);
@@ -69,5 +69,5 @@ fn main() {
     widget.draw(cloned_ui, frame, my_list, "white", "green");
 
     print!("\x1B[{};{}H\n", height + 4, 0);
-    println!("Showcase tamamlandi! Tum modul fonksiyonlari basariyla calistirildi.");
+    println!("This was the showcase. This main function made by ai but other files not.");
 }
